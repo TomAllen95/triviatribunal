@@ -41,6 +41,11 @@ app.get('/api', (req, res)=>{
     
     // }
 })
+app.get('/', async(req, res) => {
+    res.render('index', );
+    });
+    app.post('/',async(req,res) => {
+});
 
 app.get('*', (req, res) => {
     res.send('<h1>404 your page does not exist</h1>')
