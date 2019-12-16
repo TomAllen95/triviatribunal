@@ -1,7 +1,3 @@
-//////HI GUYS
-
-//Hello!!!
-
 const question = document.getElementById('question');
 const choices = Array.from(document.getElementByClassName('choice-text'));
 //questions are objects
@@ -126,3 +122,4 @@ choices .forEach( choice => {
       })
 })
 startGame(); 
+
