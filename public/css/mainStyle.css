@@ -67,7 +67,6 @@ ul
     background-color: rgb(206, 57, 20);
     margin-bottom: 50px;
 }
-  
 li a 
 {
     font-size: 30px;
@@ -80,6 +79,7 @@ li a
 
 li a:hover 
 {
+    border-radius: 20px 20px 0px 0px;
     background: rgb(255, 207, 118);
 }
 
@@ -88,6 +88,29 @@ li .active
     border-radius: 20px 20px 0px 0px;
     background: rgb(255, 190, 70);
 }
+
+#UserAvatar
+{
+    top: 0px;
+    left: 20px;
+    position: absolute;
+    background-color: rgb(206, 57, 20);
+    border-radius: 0px 0px 50% 50%;
+    width: 85px;
+}
+
+#AvatarPic
+{
+    width: 80px;
+    transition: all 0.5s ease;
+}
+
+#AvatarPic:hover
+{
+    -webkit-transform: scale(1.1);
+    -webkit-filter: drop-shadow( 0px 0px 3px rgba(0, 0, 0, 0.6));
+}
+
 /* ////////////////// NAVBAR END //////////////////  */
 
 .Question
@@ -157,10 +180,19 @@ li .active
     align-items: center;
 }
 
-@keyframes wiggle {
+@keyframes wiggle 
+{
     0% {transform: rotate(20deg);}
     25% {transform: rotate(-20deg);}
     50% {transform: rotate(20deg);}
     75% {transform: rotate(-20deg);}
     100% {transform: rotate(20deg);}
-  }
+}
+
+@-webkit-keyframes showHide 
+{ 
+    0% {width:100%}
+    40% {width:0%}
+    60% {width:0%;}
+    100% {width:100%;}
+}
