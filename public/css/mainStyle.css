@@ -18,7 +18,12 @@ h1
 {
     font-size: 200px;
     color: white;
-    text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black;
+    text-shadow: 3px 3px 0 rgb(245, 150, 43),
+                4px 4px 0 rgb(245, 150, 43),
+                5px 5px 0 rgb(245, 150, 43),
+                6px 6px 0 rgb(245, 150, 43),
+                7px 7px 0 rgb(245, 150, 43);
+
 }
 .theQ
 {
@@ -37,23 +42,35 @@ h4
 {
     font-size: 70px;
     color: rgb(255, 76, 31);
-    text-shadow: 1px 1px 0 rgb(245, 150, 43),
-                1px 2px 0 rgb(245, 150, 43),
-                1px 3px 0 rgb(245, 150, 43),
-                1px 4px 0 rgb(245, 150, 43),
-                1px 5px 0 rgb(245, 150, 43);
+    text-shadow: 3px 1px 0 rgb(245, 150, 43),
+                3px 2px 0 rgb(245, 150, 43),
+                3px 3px 0 rgb(245, 150, 43),
+                3px 4px 0 rgb(245, 150, 43),
+                3px 5px 0 rgb(245, 150, 43);
 }
 #Titles
 {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .questionMarks
 {
     height: 200px;
     width: 200px;
-    animation: 2s wiggle infinite;
+    /* animation: 2s wiggle infinite; */
+    -webkit-filter: drop-shadow( 10px 20px 10px rgba(0, 0, 0, 0.5));
+
+}
+
+#leftQ
+{
+    transform: rotateZ(-25deg);
+}
+
+#rightQ
+{
+    transform: rotateZ(25deg);
 }
 
 
@@ -129,7 +146,6 @@ li .active
 .answer
 {
     padding: 50px;
-    /* filter: drop-shadow(16px 16px 20px rgba(29, 29, 29, 0.7)) ; */
 }
 
 .flipper, .back
@@ -144,6 +160,15 @@ li .active
     box-shadow: inset 0 0 20px #ff8e8e;
     cursor: pointer;
 }
+
+.back:active
+{
+    color: rgb(185, 185, 185);
+    background: rgb(165, 18, 18);
+    box-shadow: inset 0 0 20px #571d1d;
+    text-shadow: 0px 0px 20px #333333;
+}
+
 
 .answer, .front, .back 
 {
