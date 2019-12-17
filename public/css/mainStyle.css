@@ -61,7 +61,7 @@ h4
 ul 
 {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     list-style-type: none;
     overflow: hidden;
     background-color: rgb(206, 57, 20);
@@ -179,6 +179,42 @@ li .active
     justify-content: center;
     align-items: center;
 }
+
+#BottomPageReadouts
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#TickImage,
+#TockImage
+{
+    font-size: 55px;
+    position: absolute;
+    top: 910px;
+}
+
+#TickImage
+{
+    right: 460px;
+    transform: rotateZ(-25deg);
+    animation: flickerAnimation 1s infinite;
+}
+
+#TockImage
+{
+    right: 180px;
+    transform: rotateZ(25deg);
+    animation: flickerAnimation 1s infinite;
+    animation-delay: 0.5s;
+
+}
+
+@keyframes flickerAnimation { /* flame pulses */
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
 
 @keyframes wiggle 
 {
