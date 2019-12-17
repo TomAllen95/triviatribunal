@@ -8,7 +8,7 @@ const partialPath = path.join(__dirname, '../templates/partials')
 hbs.registerPartials(partialPath);
 const app = express();
 
-const publicDirectory = path.join(__dirname, './views'); // where you want the static html files to come from
+const publicDirectory = path.join(__dirname, './public'); // where you want the static html files to come from
 app.use(express.static(publicDirectory)); // how you can access the public directory
 
 app.set('view engine', 'hbs'); //allows youy to use the handlebars template
@@ -43,6 +43,11 @@ app.get('/api', (req, res)=>{
 })
 app.get('/', async(req, res) => {
     res.render('index', );
+    });
+    app.post('/',async(req,res) => {
+});
+app.get('/signup', async(req, res) => {
+    res.render('signup', );
     });
     app.post('/',async(req,res) => {
 });
