@@ -51,7 +51,21 @@ app.get('/signup', async(req, res) => {
     });
     app.post('/',async(req,res) => {
 });
-
+app.post('/signup', function(req,res){ 
+    let name = req.body.name; 
+    let email =req.body.email; 
+    let pass = req.body.password; 
+    let data = { 
+        "name": name, 
+        "email":email, 
+        "password":pass, 
+    } 
+db.collection('details').insertOne(data,function(err, collection){ 
+        if (err) throw err; 
+        console.log("Record inserted Successfully"); 
+    }); 
+    return res.redirect('signup_success'); 
+}) 
 app.get('*', (req, res) => {
     res.send('<h1>404 your page does not exist</h1>')
 });
