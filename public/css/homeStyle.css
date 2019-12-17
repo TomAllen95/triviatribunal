@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Lilita+One&display=swap');
+*
+{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-family: 'Lilita One', cursive;
+}
+
+body
+{
+    background: rgb(255, 190, 70);
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1
+{
+    font-size: 350px;
+    color: white;
+    text-shadow: 3px 3px 0 rgb(245, 150, 43),
+                4px 4px 0 rgb(245, 150, 43),
+                5px 5px 0 rgb(245, 150, 43),
+                6px 6px 0 rgb(245, 150, 43),
+                7px 7px 0 rgb(245, 150, 43);
+
+}
+.theQ
+{
+    font-size: 100px;
+}
+h2
+{
+    font-size: 60px;
+}
+h3
+{
+    color: white;
+    font-size: 40px;
+}
+h4
+{
+    font-size: 70px;
+    color: rgb(255, 76, 31);
+    text-shadow: 3px 1px 0 rgb(245, 150, 43),
+                3px 2px 0 rgb(245, 150, 43),
+                3px 3px 0 rgb(245, 150, 43),
+                3px 4px 0 rgb(245, 150, 43),
+                3px 5px 0 rgb(245, 150, 43);
+}
+#Titles
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.questionMarks
+{
+    height: 400px;
+    width: 400px;
+    /* animation: 2s wiggle infinite; */
+    -webkit-filter: drop-shadow( 10px 20px 10px rgba(0, 0, 0, 0.5));
+
+}
+
+#leftQ
+{
+    transform: rotateZ(-25deg);
+}
+
+#rightQ
+{
+    transform: rotateZ(25deg);
+}
+
+
+/* ////////////////// NAVBAR //////////////////  */
+ul 
+{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    overflow: hidden;
+    background-color: rgb(206, 57, 20);
+    margin-bottom: 50px;
+}
+li a 
+{
+    font-size: 30px;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 80px;
+    text-decoration: none;
+}
+
+li a:hover 
+{
+    border-radius: 20px 20px 0px 0px;
+    background: rgb(255, 207, 118);
+}
+
+li .active 
+{
+    border-radius: 20px 20px 0px 0px;
+    background: rgb(255, 190, 70);
+}
+
+#UserAvatar
+{
+    top: 0px;
+    left: 20px;
+    position: absolute;
+    background-color: rgb(206, 57, 20);
+    border-radius: 0px 0px 50% 50%;
+    width: 85px;
+}
+
+#AvatarPic
+{
+    width: 80px;
+    transition: all 0.5s ease;
+}
+
+#AvatarPic:hover
+{
+    -webkit-transform: scale(1.1);
+    -webkit-filter: drop-shadow( 0px 0px 3px rgba(0, 0, 0, 0.6));
+}
+
+/* ////////////////// NAVBAR END //////////////////  */
+#LogInSignUp
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#LogSignBtn
+{
+ font-size: 40px;
+ padding: 30px;
+ border: none;
+ border-radius: 20px;
+}
+#LogInOrRegister
+{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+#LogInDiv
+{
+    width: 50%;
+}
+#RegisterDiv
+{
+    width: 50%;
+}
