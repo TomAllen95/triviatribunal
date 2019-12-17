@@ -8,7 +8,7 @@ const partialPath = path.join(__dirname, '../templates/partials')
 hbs.registerPartials(partialPath);
 const app = express();
 
-const publicDirectory = path.join(__dirname, './views'); // where you want the static html files to come from
+const publicDirectory = path.join(__dirname, '../public'); // where you want the static html files to come from
 app.use(express.static(publicDirectory)); // how you can access the public directory
 
 app.set('view engine', 'hbs'); //allows youy to use the handlebars template
@@ -51,7 +51,21 @@ app.get('/signup', async(req, res) => {
     });
     app.post('/',async(req,res) => {
 });
-
+app.post('/signup', function(req,res){ 
+    let name = req.body.name; 
+    let email =req.body.email; 
+    let pass = req.body.password; 
+    let data = { 
+        "name": name, 
+        "email":email, 
+        "password":pass, 
+    } 
+db.collection('details').insertOne(data,function(err, collection){ 
+        if (err) throw err; 
+        console.log("Record inserted Successfully"); 
+    }); 
+    return res.redirect('signup_success'); 
+}) 
 app.get('*', (req, res) => {
     res.send('<h1>404 your page does not exist</h1>')
 });
