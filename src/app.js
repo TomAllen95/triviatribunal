@@ -42,7 +42,7 @@ app.get('/api', (req, res)=>{
     // }
 })
 app.get('/', async(req, res) => {
-    res.render('index', );
+    res.render('home', );
     });
     app.post('/',async(req,res) => {
 });
