@@ -44,10 +44,10 @@ app.get('/api', (req, res) => {
                     questions.push(
                         {
                             question: entities.decode(result.question),
-                            correctAnswer: entities.decode(result.correct_answer).replace(/\\/g, ""),
-                            wrongAnswer1: entities.decode(result.incorrect_answers[0]).replace(/\\/g, ""),
-                            wrongAnswer2: entities.decode(result.incorrect_answers[1]).replace(/\\/g, ""),
-                            wrongAnswer3: entities.decode(result.incorrect_answers[2]).replace(/\\/g, "")
+                            correctAnswer: entities.decode(result.correct_answer),
+                            wrongAnswer1: entities.decode(result.incorrect_answers[0]),
+                            wrongAnswer2: entities.decode(result.incorrect_answers[1]),
+                            wrongAnswer3: entities.decode(result.incorrect_answers[2])
                         }
                     )
                 })
