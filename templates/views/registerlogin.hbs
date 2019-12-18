@@ -8,36 +8,37 @@
     <title>Document</title>
 </head>
 <body>
-    <ul>
-        <li><a class="active" href="/.">Home</a></li>
-        <li><a href="play">Play</a></li>
-        <li><a href="about">About</a></li>
-        <li><a href="high-scores">High Scores</a></li>
-        <a id="UserAvatar" href="profile.hbs"><img id="AvatarPic" src="/img/userAvatar.png"/></a>
-    </ul>
+    {{>navbar}}
+
     <div id="LogInOrRegister">
         <div id="LogInDiv">
-            <h3>Already a member? Log in here:</h3>
-            <form>
-                Username:<br>
-                <input type="text" name="firstname"><br>
-                Password:<br>
-                <input type="text" name="lastname">
-            </form>
+            <div id="logBGDiv">
+                <h3>Already a member? Log in here:</h3>
+                <form>
+                    Username:<br>
+                    <input id="LogUsername" type="text" placeholder="Username" name="firstname"><br>
+                    Password:<br>
+                    <input id="LogPassword" type="text" placeholder="Password" name="lastname"><br>
+                    <button id="LogSignBtn" type="button">Log In</button>
+                </form>
+            </div>
         </div>
         <div id="RegisterDiv">
-            <h3>Want to join the fun? Register here:</h3>
-            <form>
-                Username:<br>
-                <input type="text" name="username"><br>
-                email:<br>
-                <input type="text" name="email">
-                Create a Password:<br>
-                <input type="text" name="password">
-                Retype Password:<br>
-                <input type="text" name="passwordCheck">
-            </form>
-        </div>
+            <div id="regBGDiv">
+                <h3>Want to join the fun? Register here:</h3>
+                <form>
+                    Username:<br>
+                    <input id="RegUsername" placeholder="Username" name="username"><br>
+                    email:<br>
+                    <input id="RegEmail" type="text" placeholder="Email" name="email"><br>
+                    Create a Password:<br>
+                    <input id="RegPass1" type="text" placeholder="Password" name="password"><br>
+                    Retype Password:<br>
+                    <input id="RegPass2" type="text" placeholder="Retype Password" name="passwordCheck"><br>
+                    <button id="LogSignBtn" type="button"> Register</button>
+                </form>
+            </div>
+            </div>
     </div>
 </body>
 </html>

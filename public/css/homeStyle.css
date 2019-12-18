@@ -37,6 +37,7 @@ h3
 {
     color: white;
     font-size: 40px;
+    padding: 20px;
 }
 h4
 {
@@ -101,7 +102,7 @@ li a:hover
     background: rgb(255, 207, 118);
 }
 
-li .active 
+li.active 
 {
     border-radius: 20px 20px 0px 0px;
     background: rgb(255, 190, 70);
@@ -156,4 +157,34 @@ li .active
 #RegisterDiv
 {
     width: 50%;
+    text-align: center;
+}
+form
+{
+    font-size: 30px;
+}
+input
+{
+    font-size: 30px;
+    padding: 2px;
+    margin: 20px;
+    border: none;
+    border-radius: 7px;
+
+}
+input::placeholder
+{
+    opacity: 0.5;
+}
+
+#regBGDiv
+{
+    width: 80%;
+    background-color: rgb(206, 57, 20);
+}
+#logBGDiv
+{
+    width: 80%;
+    background-color: rgb(206, 57, 20);
+
 }
