@@ -87,10 +87,32 @@ app.get("/api", (req, res) => {
     }
   });
 });
+//this renders the home page
 app.get('/', async(req, res) => {
-    res.render('index', );
+    res.render('home', );
     });
     app.post('/',async(req,res) => {
+});
+
+//this renders the play page (where the questions are)
+app.get('/play', async(req, res) => {
+  res.render('index', );
+  });
+  app.post('/',async(req,res) => {
+});
+
+//this renders the about page
+app.get('/about', async(req, res) => {
+  res.render('about', );
+  });
+  app.post('/',async(req,res) => {
+});
+
+//this renders the high scores page
+app.get('/high-scores', async(req, res) => {
+  res.render('highscores', );
+  });
+  app.post('/',async(req,res) => {
 });
 
 app.get('/signup', (req, res) => {
