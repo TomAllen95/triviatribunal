@@ -8,13 +8,8 @@
     <title> Trivia Tribunal </title>
 </head>
 <body>
-    <ul>
-        <li><a href="/.">Home</a></li>
-        <li><a class="active" href="play">Play</a></li>
-        <li><a href="about">About</a></li>
-        <li><a href="high-scores">High Scores</a></li>
-        <a id="UserAvatar" href="profile.hbs"><img id="AvatarPic" src="/img/userAvatar.png"/></a>
-    </ul>
+    {{>navbar playActive = play}}
+
     <div id="Titles">
         <img id="leftQ" src="/img/QuestionMark.png" class="questionMarks" />
         <h1> Trivia Tribunal </h1>

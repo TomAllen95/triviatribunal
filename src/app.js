@@ -93,30 +93,40 @@ app.get("/api", (req, res) => {
   });
 });
 //this renders the home page
-app.get('/', async(req, res) => {
-    res.render('home', );
+app.get('/', async (req, res) => {
+    res.render('home', {
+        home: true 
     });
-    app.post('/',async(req,res) => {
+});
+
+app.post('/',async(req,res) => {
+
 });
 
 //this renders the play page (where the questions are)
 app.get('/play', async(req, res) => {
-  res.render('index', );
+  res.render('index', {
+      play: true
   });
+});
   app.post('/',async(req,res) => {
 });
 
 //this renders the about page
 app.get('/about', async(req, res) => {
-  res.render('about', );
+  res.render('about', {
+    about: true
   });
+});
   app.post('/',async(req,res) => {
 });
 
 //this renders the high scores page
 app.get('/high-scores', async(req, res) => {
-  res.render('highscores', );
+  res.render('highscores', {
+    highscores: true
   });
+});
   app.post('/',async(req,res) => {
 });
 
