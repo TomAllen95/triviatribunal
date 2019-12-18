@@ -8,7 +8,12 @@ const users = require('../src/database/routes/users');
 const auth = require('../src/database/routes/auth');
 const Entities = require('html-entities').AllHtmlEntities;
 // const {createUser} = require("../src/database/index")
+
+const publicDirectory = path.join(__dirname, '../public'); // where you want the static html files to come from
+const viewsPath = path.join(__dirname, '../templates/views');
 const partialPath = path.join(__dirname, '../templates/partials')
+hbs.registerPartials(partialPath);
+
 const Joi = require('joi')
 const app = express();
 const entities = new Entities();
@@ -17,10 +22,10 @@ const mongoose = require('mongoose');
 
 app.use(express.urlencoded());
 app.use(express.json());
-const publicDirectory = path.join(__dirname, '../public'); // where you want the static html files to come from
 app.use(express.static(publicDirectory)); // how you can access the public directory
-hbs.registerPartials(partialPath);
 app.set('view engine', 'hbs'); //allows you to use the handlebars template
+app.set('views', viewsPath);
+
 
 // if (!config.get('PrivateKey')) {
 //     console.error('FATAL ERROR: PrivateKey is not defined.');
