@@ -1,0 +1,40 @@
+.sidepanel {
+    height: 100vh;
+    width: 0; 
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(206, 57, 20);
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    -webkit-filter: drop-shadow( 10px 0px 10px rgba(39, 39, 39, 0.336));
+  }
+  
+  .sidepanel a {
+    padding: 20px 0px;
+    text-decoration: none;
+    font-size: 30px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidepanel a:hover {
+    -webkit-filter: drop-shadow( 0px 0px 5px rgba(250, 250, 250, 0.6));
+  }
+  
+  .sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  #AvatarImage
+  {
+    padding: 20px 0px;
+    width: 200px;
+  }
