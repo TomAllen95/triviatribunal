@@ -82,6 +82,8 @@ ul
     justify-content: space-around;
     list-style-type: none;
     overflow: hidden;
+    position: absolute;
+    width: 100vw;
     background-color: rgb(206, 57, 20);
     margin-bottom: 50px;
 }

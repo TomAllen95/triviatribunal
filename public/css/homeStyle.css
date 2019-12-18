@@ -82,6 +82,8 @@ ul
     justify-content: space-around;
     list-style-type: none;
     overflow: hidden;
+    position: absolute;
+    width: 100vw;
     background-color: rgb(206, 57, 20);
     margin-bottom: 50px;
 }
@@ -114,12 +116,12 @@ li .active
     position: absolute;
     background-color: rgb(206, 57, 20);
     border-radius: 0px 0px 50% 50%;
-    width: 85px;
+    width: 55px;
 }
 
 #AvatarPic
 {
-    width: 80px;
+    width: 60px;
     transition: all 0.5s ease;
 }
 
@@ -156,4 +158,8 @@ li .active
 #RegisterDiv
 {
     width: 50%;
+}
+form
+{
+    font-size: 30px;
 }

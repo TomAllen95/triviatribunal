@@ -4,17 +4,20 @@ const express = require('express');
 const fs = require('fs');
 const Entities = require('html-entities').AllHtmlEntities;
 const getQuestions = require('./getQuestions')
-const partialPath = path.join(__dirname, '../templates/partials')
 
+const publicDirectory = path.join(__dirname, '../public'); // where you want the static html files to come from
+const viewsPath = path.join(__dirname, '../templates/views');
+const partialPath = path.join(__dirname, '../templates/partials')
 hbs.registerPartials(partialPath);
+
 const app = express();
 const entities = new Entities();
 
-const publicDirectory = path.join(__dirname, '../public'); // where you want the static html files to come from
+
 app.use(express.static(publicDirectory)); // how you can access the public directory
 
 app.set('view engine', 'hbs'); //allows youy to use the handlebars template
-// app.set('views', viewsPath);
+app.set('views', viewsPath);
 
 app.get('/api', (req, res)=>{ 
     
@@ -83,7 +86,7 @@ app.get('/api', (req, res)=>{
     // }
 })
 app.get('/', async(req, res) => {
-    res.render('home', );
+    res.render('registerlogin', );
     });
     app.post('/',async(req,res) => {
 });
