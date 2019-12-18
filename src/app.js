@@ -4,6 +4,7 @@ const express = require('express');
 const fs = require('fs');
 const getQuestions = require('./getQuestions');
 const UserSchema = require('./database/models/user');
+const ScoresSchema = require('./database/models/scores')
 const users = require('../src/database/routes/users');
 const auth = require('../src/database/routes/auth');
 const Entities = require('html-entities').AllHtmlEntities;
@@ -109,8 +110,6 @@ app.get('/play', async(req, res) => {
       play: true
   });
 });
-  app.post('/',async(req,res) => {
-});
 
 //this renders the about page
 app.get('/about', async(req, res) => {
@@ -118,16 +117,19 @@ app.get('/about', async(req, res) => {
     about: true
   });
 });
-  app.post('/',async(req,res) => {
-});
+
 
 //this renders the high scores page
 app.get('/high-scores', async(req, res) => {
-  res.render('highscores', {
-    highscores: true
-  });
-});
-  app.post('/',async(req,res) => {
+
+  ScoresSchema.find({}, (err,obj) => {
+    console.log(obj)
+    res.render('highscores', {
+      highscores: true,
+      scoreList: obj
+    });
+  })
+
 });
 
 app.get('/signup', (req, res) => {
