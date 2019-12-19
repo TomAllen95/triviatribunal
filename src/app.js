@@ -79,7 +79,8 @@ mongoose.connect(`mongodb+srv://tom:password123abc@triviatribunaldatabase-bdqjy.
 .catch(err => console.error('Something went wrong', err));
 
 app.get("/api", (req, res) => {
-  getQuestions(response => {
+  getQuestions(req.query.category, req.query.difficulty, (response) => {
+    // console.log(response);
     if (response.error) {
       res.send({
         error: response.error
@@ -103,7 +104,6 @@ app.get("/api", (req, res) => {
             wrongAnswer3: entities.decode(result.incorrect_answers[2])
           });
         });
-
         res.send({
           questions: questions
         });
@@ -145,14 +145,14 @@ app.get('/', async (req, res) => {
 
 //this renders the play page (where the questions are)
 app.get('/gameChoosing', async(req, res) => {
-  res.render('gameChoosing', {
+  res.render('index', {
       play: true
   });
 });
 
 //this renders the play page (where the questions are)
 app.get('/play', async(req, res) => {
-  res.render('index', {
+  res.render('gameChoosing', {
       play: true
   });
 });
