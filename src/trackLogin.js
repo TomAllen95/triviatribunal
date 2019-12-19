@@ -23,6 +23,7 @@ const findUser = (req, res) => {
     //this processes the cookies object so we grab only the user name
     //more could be added here if we wanted to grab more from the cookie in future
     let userCookie = list.user;
+
     if(typeof userCookie == 'undefined'){
         return null;
     } else{
