@@ -272,7 +272,7 @@ li.active
 #GreenTick.animated,
 #RedCross.animated
 {
-    animation: answerVisualisation 1.5s ease;
+    animation: answerVisualisation 1s ease;
 }
 
 @keyframes flickerAnimation { /* flame pulses */
