@@ -289,14 +289,14 @@ li.active
 }
 #SteadyTitle
 {
-    animation-delay: 3s;
+    animation-delay: 2s;
 }
 
 .WholeQuestion
 {
     opacity: 0;
     animation: fadeInBottom 1s ease-out;
-    animation-delay: 5s;
+    animation-delay: 4s;
     animation-fill-mode: forwards;
 
 }
