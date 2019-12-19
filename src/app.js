@@ -153,7 +153,7 @@ app.get("/", async (req, res) => {
 app.get("/gameChoosing", ensureAuthenticated, async (req, res) => {
   let userName = trackLogin.findUser(req, res);
   if (userName) {
-    res.render("gameChoosing", {
+    res.render("index", {
       play: true,
       userName: userName
     });
@@ -166,7 +166,7 @@ app.get("/gameChoosing", ensureAuthenticated, async (req, res) => {
 app.get("/play", async (req, res) => {
   let userName = trackLogin.findUser(req, res);
   if (userName) {
-    res.render("index", {
+    res.render("gameChoosing", {
       play: true,
       userName: userName
     });
@@ -258,9 +258,9 @@ app.post(
   ),
   function(req, res) {
     trackLogin.setActiveUser(req, res, res.req.body.username);
-    console.log("You are now logged in"); //////LOOK HERE TOM
+    console.log("You are now logged in"); 
     console.log(res.req.body.username);
-    res.redirect("/gameChoosing");
+    res.redirect("/play");
   }
 );
 ///// log in stuff
