@@ -12,13 +12,19 @@
 <body>
     {{>navbar highscoresActive = highscores}}
 
+    <div id="MainScoreboard">
+        <h2>High Scores</h2>
+        <div id="AllTheScores">
+            {{#each scoreList}}
+            <div class="highScoreEntry">
+                <div class="HSUsername">{{this.username}}</div>
+                <div class="HSScore"> {{this.score}}</div>
+            </div>
+            <hr>
+            {{/each}}
+        </div>
+    </div>
 
-    <h2>High Scores</h2>
-    <ol>
-        {{#each scoreList}}
-        <li>{{this.username}} {{this.score}}</li>
-        {{/each}}
-    </ol>
 
     <script  src="/sidePanel.js"></script>
 

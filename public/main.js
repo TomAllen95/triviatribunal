@@ -129,7 +129,7 @@ function RightOrWrong(cssID)
     document.getElementById(cssID).classList.add("animated");
     setTimeout(function() {
         document.getElementById(cssID).classList.remove("animated");
-    }, 1500);
+    }, 1000);
 }
 
 

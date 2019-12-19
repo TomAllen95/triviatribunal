@@ -105,6 +105,13 @@ app.post('/',async(req,res) => {
 });
 
 //this renders the play page (where the questions are)
+app.get('/gameChoosing', async(req, res) => {
+  res.render('gameChoosing', {
+      play: true
+  });
+});
+
+//this renders the play page (where the questions are)
 app.get('/play', async(req, res) => {
   res.render('index', {
       play: true
