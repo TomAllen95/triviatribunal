@@ -226,22 +226,21 @@ li.active
     font-size: 55px;
     position: absolute;
     top: -20px;
+    animation: flickerAnimation 1s infinite;
+
 }
 
 #TickImage
 {
     right: 235px;
     transform: rotateZ(-25deg);
-    animation: flickerAnimation 1s infinite;
 }
 
 #TockImage
 {
     right: -140px;
     transform: rotateZ(25deg);
-    animation: flickerAnimation 1s infinite;
     animation-delay: 0.5s;
-
 }
 
 .tickNcross
@@ -273,6 +272,33 @@ li.active
 #RedCross.animated
 {
     animation: answerVisualisation 1s ease;
+}
+
+#ReadyTitle,
+#SteadyTitle
+{
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    opacity: 0;
+    animation: opacityOnAndOff 2s ease;
+}
+#ReadyTitle
+{
+    animation-delay: 0.5s;
+}
+#SteadyTitle
+{
+    animation-delay: 3s;
+}
+
+.WholeQuestion
+{
+    opacity: 0;
+    animation: fadeInBottom 1s ease-out;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+
 }
 
 @keyframes flickerAnimation { /* flame pulses */
@@ -323,3 +349,11 @@ li.active
       opacity: 0;
     }
   }
+
+@keyframes fadeInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to { opacity: 1 }
+}
