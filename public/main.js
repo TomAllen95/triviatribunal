@@ -22,10 +22,15 @@ let questionCounter = 0;
 let questions = [];
 let questionIndex = "";
 let correctAnswer = "";
-let correct_bonus = 10;
+let correct_bonus = "";
 
-// let category = "";
-// let difficulty = "";
+if (difficulty == "easy"){ 
+    correct_bonus = 10
+} else if (difficulty == "medium"){
+    correct_bonus = 20
+} else if (difficulty == "hard"){
+    correct_bonus = 30
+};
 
 if( document.querySelector('#GameChoiceSubmit') ) {
     document.querySelector('#GameChoiceSubmit').addEventListener('click', () => {
@@ -112,8 +117,8 @@ getNewQuestion = () => {
     questions.questions.splice(questionIndex, 1);
 
     update();
-
-    // timer();
+    restartTimer();
+    timer();
 }
 
 //so the 'click' registers and we can see what is being clicked in the inspector. 
@@ -142,18 +147,24 @@ choices[i].addEventListener('click', e => {
 
 // 15 Second Timer to run on display of each question
 
+let cdTimer; 
+
 const timer = () => {
     let timeleft = 15;
-    let downloadTimer = setInterval(function () {
+    cdTimer = setInterval(function () {
         timeleft--;
         document.getElementById("countdown").textContent = "Time Left: " + timeleft + "s";
         if (timeleft <= 0) {
-            clearInterval(downloadTimer);
+            clearInterval(cdTimer);
             document.getElementById("countdown").textContent = "TIMES UP!"
             getNewQuestion();
         }
     }, 1000);
 }
+
+const restartTimer = () => {
+    clearInterval(cdTimer);
+  }
 
 //Question status
 const update = () => {
@@ -174,4 +185,5 @@ function RightOrWrong(cssID)
 }
 
 startGame();
+
 
