@@ -15,28 +15,34 @@
         <li><a href="high-scores">High Scores</a></li>
         <a id="UserAvatar" href="profile.hbs"><img id="AvatarPic" src="/img/userAvatar.png"/></a>
     </ul>
+    
+            
+    </ul>
     <div id="LogInOrRegister">
         <div id="LogInDiv">
             <h3>Already a member? Log in here:</h3>
-            <form>
-                Username:<br>
-                <input type="text" name="firstname"><br>
-                Password:<br>
-                <input type="text" name="lastname">
+            <form action="/login" method="post">
+            <input type="text" name="username" id="username" placeholder="username" required /><br>
+            Password:<br>
+            <input type="password" name="password" id="password" placeholder="Password " required /><br>
+            <input type="submit" class="loginButton" id="submitDetails" name="submitDetails" value="Submit" /><br>
             </form>
-        </div>
+            </div>
         <div id="RegisterDiv">
             <h3>Want to join the fun? Register here:</h3>
-            <form>
-                Username:<br>
-                <input type="text" name="username"><br>
-                email:<br>
-                <input type="text" name="email">
-                Create a Password:<br>
-                <input type="text" name="password">
-                Retype Password:<br>
-                <input type="text" name="passwordCheck">
-            </form>
+            <form action="/registerlogin" method="post"> 
+            <input type="text" name="username" id="username" 
+            placeholder="username"  required /><br> 
+            <input  type="email" name="email" id="email" 
+            placeholder="E-Mail " required /><br> 
+            <input  type="password" name="password" 
+            id="password" placeholder="Password " required/><br> 
+            <input  type="password" name="password2" 
+            id="password2" placeholder="Retype Password " required/><br> 
+                        <br> 
+            <input type="submit" class="registerButton" id="submitDetails"  
+            name="submitDetails" value="Submit" /><br> 
+            </form> 
         </div>
     </div>
 </body>

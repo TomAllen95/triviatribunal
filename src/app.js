@@ -1,24 +1,65 @@
 const hbs = require('hbs');
 const path = require('path')
 const express = require('express');
+const expressValidator = require('express-validator');
 const fs = require('fs');
 const getQuestions = require('./getQuestions');
 const UserSchema = require('./database/models/user');
-const users = require('../src/database/routes/users');
+const cookieParser = require('cookie-parser');
+const routes = require('../src/database/routes/users');
 const auth = require('../src/database/routes/auth');
 const Entities = require('html-entities').AllHtmlEntities;
-// const {createUser} = require("../src/database/index")
-
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const flash = require('connect-flash')
 const publicDirectory = path.join(__dirname, '../public'); // where you want the static html files to come from
 const viewsPath = path.join(__dirname, '../templates/views');
 const partialPath = path.join(__dirname, '../templates/partials')
-hbs.registerPartials(partialPath);
-
 const Joi = require('joi')
 const app = express();
 const entities = new Entities();
 const config = require('config');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
+hbs.registerPartials(partialPath);
+// use routes
+app.use(routes);
+app.use(auth);
+
+
+app.use(cookieParser());
+// Handle sessions 
+app.use(session({
+  secret: 'secret',
+  saveUninitialised: true,
+  resave: true
+}));
+// Passport 
+app.use(passport.initialize());
+app.use(passport.session());
+// //Validator 
+app.use(expressValidator({
+  errorFormatter: function(param, msg,value){
+    let namespace = param.split('.'), root = namespace.shift(), formParam = root;
+
+    while(namespace.length){
+      formParam += '['+ namespace.shift() + ']';
+    }return{
+      param: formParam,
+      msg: msg,
+      value: value
+    };
+  }
+}));
+// flash messages for handlebars
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
+
 
 app.use(express.urlencoded());
 app.use(express.json());
@@ -96,8 +137,6 @@ app.get("/api", (req, res) => {
 app.get('/', async(req, res) => {
     res.render('home', );
     });
-    app.post('/',async(req,res) => {
-});
 
 //this renders the play page (where the questions are)
 app.get('/play', async(req, res) => {
@@ -110,31 +149,29 @@ app.get('/play', async(req, res) => {
 app.get('/about', async(req, res) => {
   res.render('about', );
   });
-  app.post('/',async(req,res) => {
-});
 
 //this renders the high scores page
 app.get('/high-scores', async(req, res) => {
   res.render('highscores', );
   });
-  app.post('/',async(req,res) => {
+ 
+app.get('/signup_success', (req, res) => {
+  res.render('signup_success', );
 });
 
-app.get('/signup', (req, res) => {
-    res.render('signup', );
-    console.log('signup page is loaded')
-    });
-    app.get('/signup_succes', (req, res) => {
-        res.render('signup_success', );
-        
-        });
-
-app.post('/signup', async(req,res)=>{ 
-    const username = req.body.username;
-    // const email = req.body.email;
-    // const password = req.body.password;
+// register login page
+app.get('/registerlogin', (req, res) => {
+  res.render('registerlogin', );
+  console.log('registerlogin page is loaded')
+  });
     
-    UserSchema.findOne({username: username}, (err,obj) => {
+app.post('/registerlogin', async(req,res)=>{ 
+    const username = req.body.username;
+    const email = req.body.email;
+    let password = req.body.password;
+    const password2 = req.body.password2;
+
+    UserSchema.findOne({username: username}, async (err,obj)  => {
         console.log(obj)
         // let user = [ username, email, password ];
         console.log('username is ', username);
@@ -142,19 +179,68 @@ app.post('/signup', async(req,res)=>{
             console.log("error");
         } else if (obj) {
             console.log('this username exists')
+        } else if(password!=password2){
+          console.log('the passwords did not match')
+          res.redirect('/');
         } else {
-            const user = new UserSchema({
-                username: req.body.username,
-                email: req.body.email,
-                password: req.body.password
+          const salt = await bcrypt.genSalt(10); 
+          password = await bcrypt.hash(password, salt); // hashing ths password
+            
+          const user = new UserSchema({
+                username: username,
+                email: email,
+                password: password
             })
-            user.save()
-            return res.redirect('/signup_success')
+            console.log("saved user to the database")
+             user.save()
+             
+            res.redirect('/signup_success');
         }
     });
 });
+app.post('/login',
+  passport.authenticate('local', {failureRedirect:'/registerlogin', failureFlash: 'Invalid username or password'}),
+  function(req, res) {
+    req.flash('success', "You are now logged in")
+    res.redirect('/')
+  });
 
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+  
+  passport.deserializeUser(function(id, done) {
+    User.getUserById(id, function(err, user) {
+      done(err, user);
+    });
+  });
 
+passport.use(new LocalStrategy(function(username, password, done){
+  UserSchema.getUserByUsername(username, function(err, user){
+    if(err) throw err;
+    if(!user){
+      return done(null, false, {message: 'Unknown User'});
+    }
+    User.comparePassword(password, user.password, function(err, isMatch){
+      if (err) return done(err);
+      if (isMatch){
+        return done (null, user);
+      }else{
+        return done(null, false, {message: 'Invalid Password'});
+      }
+    });
+  })
+}))
+
+app.get('/signup_success', (req, res) => {
+  res.render('signup_success', );
+});
+
+app.get('/logout', function(req, res){
+  req.logout();
+  req.flash('success', 'You are now logged out');
+  res.redirect('/registerlogin')
+})
 app.get('*', (req, res) => {
     res.send('<h1>404 your page does not exist</h1>')
 });
