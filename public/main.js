@@ -4,12 +4,17 @@ const choiceB = document.getElementById('cardContentB');
 const choiceC = document.getElementById('cardContentC');
 const choiceD = document.getElementById('cardContentD');
 
-let choices = document.getElementsByClassName("choices");
+const url_string = window.location.href;
+const url = new URL(url_string);
+let category = url.searchParams.get("Category");
+let difficulty = url.searchParams.get("Difficulty");
 
-const gameStart = document.querySelector('form');
+const choices = document.getElementsByClassName("answer");
 
-const topic = document.querySelector('CategorySelector');
-const level = document.querySelector('DifficultySelector');
+const gameStart = document.getElementById('form');
+
+const topic = document.getElementById('CategorySelector');
+const level = document.getElementById('DifficultySelector');
 
 let currentQuestion = {};
 let score = 0;
@@ -17,36 +22,58 @@ let questionCounter = 0;
 let questions = [];
 let questionIndex = "";
 let correctAnswer = "";
-let correct_bonus = 10;
+let correct_bonus = "";
 
-let category = "";
-let difficulty = "";
+if (difficulty == "easy"){ 
+    correct_bonus = 10
+} else if (difficulty == "medium"){
+    correct_bonus = 20
+} else if (difficulty == "hard"){
+    correct_bonus = 30
+};
 
- gameStart.addEventListener ('GameChoiceSubmit', (e) => {
-    e.preventDefault();
+if( document.querySelector('#GameChoiceSubmit') ) {
+    document.querySelector('#GameChoiceSubmit').addEventListener('click', () => {
+        select();
+    });
+}
 
-    if (level.value == "General Knowledge") {
+const select = (e) => { 
+
+    if (topic.value == "general knowledge") {
         category = 9
-    } else if (level.value == "Mythology"){
+    } else if (topic.value == "mythology"){
         category = 20
-    } else if (level.value == "Animals"){
+    } else if (topic.value == "animals"){
         category = 27
     }
-    difficulty = level.value;
+    difficulty = level.value.toLowerCase();
+};
 
-    // await fetch('http://localhost:3000/api?difficulty=' + difficulty + `&category=` + category).then((response) => {
-    await fetch('http://localhost:3000/api').then((response) => {
-        response.json().then((data) => {
-            if (data.error) {
-                console.log(data.error);
-                question.textContent = data.error;
-            } else {
-                questions = data;
-                getNewQuestion();
-            }
-        })
-    })
-});
+const startGame = async () => {
+    if (category == "general knowledge") {
+        category = 9
+    } else if (category == "mythology"){
+        category = 20
+    } else if (category == "animals"){
+        category = 27
+    }
+    fetch('http://localhost:3000/api?category='+ category +'&difficulty=' + difficulty + "&type=multiple").then((response) => {
+                response.json().then((data) => {
+                    if (data.error) {
+                        console.log(data.error);
+                        if(question) {
+                            question.textContent = data.error;
+                        }
+                    } else {
+                        questions = data;
+                            if(question) {
+                                getNewQuestion();
+                            }
+                    }
+                })
+            });
+};
 
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
@@ -90,12 +117,13 @@ getNewQuestion = () => {
     questions.questions.splice(questionIndex, 1);
 
     update();
-
-    // setInterval (timer())
+    restartTimer();
+    timer();
 }
 
 //so the 'click' registers and we can see what is being clicked in the inspector. 
-document.addEventListener('click', e => {
+for (var i = 0; i < choices.length; i++) {
+choices[i].addEventListener('click', e => {
     const selectedChoice = e.target;
     userAnswer = selectedChoice.textContent.trim();
 
@@ -115,24 +143,28 @@ document.addEventListener('click', e => {
         getNewQuestion(); 
     }, 1000);
 });
-
-
-
+};
 
 // 15 Second Timer to run on display of each question
 
+let cdTimer; 
+
 const timer = () => {
     let timeleft = 15;
-    let downloadTimer = setInterval(function () {
+    cdTimer = setInterval(function () {
         timeleft--;
         document.getElementById("countdown").textContent = "Time Left: " + timeleft + "s";
         if (timeleft <= 0) {
-            clearInterval(downloadTimer);
+            clearInterval(cdTimer);
             document.getElementById("countdown").textContent = "TIMES UP!"
             getNewQuestion();
         }
     }, 1000);
 }
+
+const restartTimer = () => {
+    clearInterval(cdTimer);
+  }
 
 //Question status
 const update = () => {
@@ -151,5 +183,7 @@ function RightOrWrong(cssID)
         document.getElementById(cssID).classList.remove("animated");
     }, 1000);
 }
+
+startGame();
 
 

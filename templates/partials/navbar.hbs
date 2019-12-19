@@ -3,7 +3,7 @@
     <li class={{#if playActive }} "active" {{else}} "" {{/if}}><a href="gameChoosing">Play</a></li>
     <li class={{#if aboutActive }} "active" {{else}} "" {{/if}}><a href="about">About</a></li>
     <li class={{#if highscoresActive }} "active" {{else}} "" {{/if}}><a href="high-scores">High Scores</a></li>
-    <a id="UserAvatar"  onclick="openNav()"><img id="AvatarPic" src="/img/userAvatar.png"/></a>
+    <a id="UserAvatar"  onclick="openNav()"><img id="AvatarPic" src="/img/userAvatar.png" alt="avatarPic"/></a>
 </ul>
 
 
@@ -13,6 +13,7 @@
   <img id="AvatarImage" src="/img/Avatar.png">
   <h2>{{userName}}</h2>
   {{#if userName}}
+
   <a href="#">Your Stats</a>
   {{/if}}
   <a href="#">Settings</a>

@@ -12,26 +12,26 @@
     {{>navbar}}
     <div id="GameChoicePageMain">
         <h1>Choose your Game Type</h1>
-        <form>
+        <form id="form" action="/gameChoosing" method="GET">
             <select id="CategorySelector" name="Category">
                 <option value="Choose a Topic" Selected >Choose A Topic </option>
-                <option value="General Knowledge">General Knowledge</option>
-                <option value="Mythology">Mythology</option>
-                <option value="Animals">Animals</option>
+                <option value="general knowledge">General Knowledge</option>
+                <option value="mythology">Mythology</option>
+                <option value="animals">Animals</option>
             </select>
             <br><br>
             <select id="DifficultySelector" name="Difficulty">
                 <option value="Choose a Difficulty" Selected >Choose A Difficulty </option>
-                <option value="Easy">Easy</option>
-                <option value="Medium">Medium</option>
-                <option value="Hard">Hard</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
             </select>
             <br><br>
             <button id="GameChoiceSubmit" type="submit">Play</button>
         </form>
     </div>
 
-    <script  src="/sidePanel.js"></script>
-
+   <script  src="/main.js"></script>
+    
 </body>
 </html>

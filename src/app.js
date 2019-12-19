@@ -83,7 +83,8 @@ mongoose
   .catch(err => console.error("Something went wrong", err));
 
 app.get("/api", (req, res) => {
-  getQuestions(response => {
+  getQuestions(req.query.category, req.query.difficulty, (response) => {
+    // console.log(response);
     if (response.error) {
       res.send({
         error: response.error
@@ -107,7 +108,6 @@ app.get("/api", (req, res) => {
             wrongAnswer3: entities.decode(result.incorrect_answers[2])
           });
         });
-
         res.send({
           questions: questions
         });
