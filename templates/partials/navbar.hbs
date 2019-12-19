@@ -8,10 +8,16 @@
 
 
 <div id="mySidepanel" class="sidepanel">
+  
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <img id="AvatarImage" src="/img/Avatar.png" alt="avatarPic">
-  {{!-- <h2>{{userName}}</h2> --}}
+  <img id="AvatarImage" src="/img/Avatar.png">
+  <h2>{{userName}}</h2>
+  {{#if userName}}
+
   <a href="#">Your Stats</a>
+  {{/if}}
   <a href="#">Settings</a>
-  <a href="#">Log Out</a>
+  {{#if userName}}
+  <a href="http://localhost:3000/logout">Log Out</a>
+  {{/if}}
 </div>

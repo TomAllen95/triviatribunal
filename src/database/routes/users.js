@@ -1,11 +1,7 @@
 const { User, validate } = require('../models/user');
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const _ = require('lodash');
  
-
-
 router.all('/session-flash', function( req, res ) {
     req.session.sessionFlash = {
       type: 'info',
@@ -13,5 +9,6 @@ router.all('/session-flash', function( req, res ) {
     }
     res.redirect(301, '/');
   });
- 
+  
+
 module.exports = router;

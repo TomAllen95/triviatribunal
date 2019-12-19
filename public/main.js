@@ -4,6 +4,10 @@ const choiceB = document.getElementById('cardContentB');
 const choiceC = document.getElementById('cardContentC');
 const choiceD = document.getElementById('cardContentD');
 
+const button = document.getElementById('button');
+
+
+
 const url_string = window.location.href;
 const url = new URL(url_string);
 let category = url.searchParams.get("Category");
@@ -15,6 +19,7 @@ const gameStart = document.getElementById('form');
 
 const topic = document.getElementById('CategorySelector');
 const level = document.getElementById('DifficultySelector');
+
 
 let currentQuestion = {};
 let score = 0;
@@ -90,9 +95,16 @@ function shuffle(array) {
     return array;
 }
 
+function unhide() {
+    choices.style.visibilty = 'hidden';
+    button.style.visibilty = 'visible';
+    
+}
+
 getNewQuestion = () => {
     if (questionCounter == 10) {
         question.textContent = "Game Over! Your score is " + score;
+        unhide();
     }
     questionCounter++;
     // Randomly selects an index between 0 and 9 to select a random question from the array
@@ -186,4 +198,7 @@ function RightOrWrong(cssID)
 
 startGame();
 
+// button.addEventListener('click', () => {
+//     updateScore
+// }
 

@@ -249,6 +249,10 @@ li.active
     height: 200px;
 }
 
+#button{
+    visibility: hidden;
+}
+
 #GreenTick,
 #RedCross
 {
