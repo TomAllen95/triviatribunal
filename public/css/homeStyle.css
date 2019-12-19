@@ -62,22 +62,35 @@ h4
 
 .questionMarks
 {
-    height: 400px;
-    width: 400px;
+    height: 550px;
+    width: 550px;
     /* animation: 2s wiggle infinite; */
     -webkit-filter: drop-shadow( 10px 20px 10px rgba(0, 0, 0, 0.5));
 
 }
+#HomeTitle
+{
+    text-align: center;
+}
+#leftQ,
+#rightQ
+{
+    position: absolute;
+}
 
 #leftQ
 {
+    left: 260px;
     transform: rotateZ(-25deg);
 }
 
 #rightQ
 {
+    right: 260px;
     transform: rotateZ(25deg);
 }
+
+
 
 
 /* ////////////////// NAVBAR //////////////////  */
@@ -151,6 +164,12 @@ li.active
     border-radius: 20px;
     cursor: pointer;
 }
+#LogInSignUp a
+{
+    text-decoration: none;
+    color: black;
+}
+
 #LogSignBtn:hover
 {
     background-color: rgb(255, 255, 255);
@@ -191,7 +210,7 @@ input
 }
 input::placeholder
 {
-    opacity: 0.5;
+    opacity: 0.2;
 }
 
 #regBGDiv

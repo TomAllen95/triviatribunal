@@ -7,6 +7,10 @@
     font-family: 'Lilita One', cursive;
 }
 
+:focus
+{
+    outline: none;
+}
 body
 {
     background: rgb(255, 190, 70);
@@ -16,13 +20,14 @@ body
 
 h1
 {
-    font-size: 350px;
+    font-size: 100px;
     color: white;
     text-shadow: 3px 3px 0 rgb(245, 150, 43),
                 4px 4px 0 rgb(245, 150, 43),
                 5px 5px 0 rgb(245, 150, 43),
                 6px 6px 0 rgb(245, 150, 43),
                 7px 7px 0 rgb(245, 150, 43);
+    padding: 40px;
 
 }
 .theQ
@@ -130,59 +135,31 @@ li.active
 }
 
 /* ////////////////// NAVBAR END //////////////////  */
-#MainScoreboard
+
+#CategorySelector
 {
+    font-size: 50px;
+    margin: 40px;
+    width: 500px;
+}
+
+#DifficultySelector
+{
+    font-size: 50px;
+    margin: 40px;
+    width: 500px;
+}
+#GameChoiceSubmit
+{
+    font-size: 40px;
+    padding: 10px 30px;
+    border-radius: 15px;
+}
+#GameChoicePageMain
+{
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-}
-
-#AllTheScores
-{
-    text-align: center;
-    width: 40%;
-}
-
-h2
-{
-    font-size: 90px;
-    color: rgb(255, 76, 31);
-    text-shadow: 3px 3px 0 rgb(245, 150, 43),
-                4px 4px 0 rgb(245, 150, 43),
-                5px 5px 0 rgb(245, 150, 43),
-                6px 6px 0 rgb(245, 150, 43),
-                7px 7px 0 rgb(245, 150, 43);
-}
-
-.highScoreEntry
-{
-    display: flex;
-    justify-content: space-between;
-}
-
-.HSScore,
-.HSUsername
-{
-    padding: 10px 0;
-    font-size: 50px;
-    color: white;
-    text-shadow: 3px 3px 0 rgb(245, 150, 43),
-                4px 4px 0 rgb(245, 150, 43),
-                5px 5px 0 rgb(245, 150, 43),
-                6px 6px 0 rgb(245, 150, 43),
-                7px 7px 0 rgb(245, 150, 43);
-
-}
-
-
-hr
-{
-    background-color: rgb(187, 0, 0);
-    border: none;
-    width: 70%;
-    height: 4px;
-    margin: 0 15%;
-    border-radius: 50%;
-
+    align-content: center;
 }

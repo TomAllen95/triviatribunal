@@ -13,9 +13,14 @@
     {{>navbar playActive = play}}
 
     <div id="Titles">
-        <img id="leftQ" src="/img/QuestionMark.png" class="questionMarks" />
+        <img id="leftQ" src="/img/QuestionMark.png" class="questionMarks" alt="QuestionMark"/>
         <h1> Trivia Tribunal </h1>
-        <img id="rightQ" src="/img/QuestionMark.png" class="questionMarks" />
+        <img id="rightQ" src="/img/QuestionMark.png" class="questionMarks" alt="QuestionMark"/>
+    </div>
+
+    <div>
+        <h1 id="ReadyTitle"> Ready ... </h1>
+        <h1 id="SteadyTitle"> Steady ...</h1>
     </div>
 
     <div class="WholeQuestion">
@@ -100,46 +105,32 @@
             </div>
 
         </div>
+        <div id="BottomPageReadouts">
+            <div id="QuestionTallyDiv">
+                <h3 id="questionCounter"> Question: 1/10 </h3>
+            </div>
+
+            <div id="playerScore">
+                <h4 id="score"> Score: 0 </h4>
+            </div>
+
+            <div id="GreenTick">
+                <img class="tickNcross" src="/img/GreenTick.png" alt="tick">
+            </div>
+            <div id="RedCross">
+                <img class="tickNcross" src="/img/RedCross.png" alt="cross">
+            </div>
+
+            <div id="TimerDiv">
+                <h4 id="TickImage"> TICK</h4>
+                <h3 id="countdown"> Time left: 15s</h3>
+                <h4 id="TockImage"> TOCK</h4>
+            </div>
+        </div>
     </div>
 
-    <div id="BottomPageReadouts">
-        <div id="QuestionTallyDiv">
-            <h3 id="questionCounter"> Question: 1/10 </h3>
-        </div>
-
-        <div id="playerScore">
-            <h4 id="score"> Score: 140 </h4>
-        </div>
-{{!-- 
-        <div class="RightWrongImage">
-            <img id="GreenTick" src="/img/GreenTick.png">
-        </div>
-        <div class="RightWrongImage">
-            <img id="RedCross" src="/img/RedCross.png">
-        </div> --}}
-
-        <div id="TimerDiv">
-            <h4 id="TickImage"> TICK</h4>
-            <h3 id="countdown"> Time left: 15s</h3>
-            <h4 id="TockImage"> TOCK</h4>
-        </div>
-    </div>
     <script  src="/sidePanel.js"></script>
     <script  src="/main.js"></script>
-
-    {{!-- <script type="text/javascript">
-            function unhide(clickButton, divID) {
-                var item = document.getElementById(divID);
-                if (item) {
-                    if(item.className=='hidden'){
-                        items.className = 'unhidden';
-                        clickedButton.value = 'hide';
-                    }else{
-                        item.className = 'hidden';
-                        clickedButton.value = 'unhide';
-                    }
-                }}
-            </script> --}}
 
 </body>
 </html>

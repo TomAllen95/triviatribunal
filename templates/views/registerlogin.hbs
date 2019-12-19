@@ -12,35 +12,36 @@
 <body>
     {{>navbar}}
 
+{{#each errors}}
+    <div class="alert alert-danger">{{errors}}</div>
+{{/each}}
     <div id="LogInOrRegister">
         <div id="LogInDiv">
-            <div id="logBGDiv">
-                <h3>Already a member? Log in here:</h3>
-                <form>
-                    Username:<br>
-                    <input id="LogUsername" type="text" placeholder="Username" name="firstname"><br>
-                    Password:<br>
-                    <input id="LogPassword" type="text" placeholder="Password" name="lastname"><br>
-                    <button id="LogSignBtn" type="button">Log In</button>
-                </form>
+            <h3>Already a member? Log in here:</h3>
+            <form action="/login" method="post">
+            <input type="text" name="username" id="username" placeholder="username" required /><br>
+            Password:<br>
+            <input type="password" name="password" id="password" placeholder="Password " required /><br>
+            <input type="submit" class="loginButton" id="submitDetails" name="submitDetails" value="Submit" /><br>
+            </form>
             </div>
-        </div>
         <div id="RegisterDiv">
-            <div id="regBGDiv">
-                <h3>Want to join the fun? Register here:</h3>
-                <form>
-                    Username:<br>
-                    <input id="RegUsername" placeholder="Username" name="username"><br>
-                    email:<br>
-                    <input id="RegEmail" type="text" placeholder="Email" name="email"><br>
-                    Create a Password:<br>
-                    <input id="RegPass1" type="text" placeholder="Password" name="password"><br>
-                    Retype Password:<br>
-                    <input id="RegPass2" type="text" placeholder="Retype Password" name="passwordCheck"><br>
-                    <button id="LogSignBtn" type="button"> Register</button>
-                </form>
-            </div>
-            </div>
+            <h3>Want to join the fun? Register here:</h3>
+            <form action="/registerlogin" method="post"> 
+            <input type="text" name="username" id="username" 
+            placeholder="username"  required /><br> 
+            <input  type="email" name="email" id="email" 
+            placeholder="E-Mail " required /><br> 
+            <input  type="password" name="password" 
+            id="password" placeholder="Password " required/><br> 
+            <input  type="password" name="password2" 
+            id="password2" placeholder="Retype Password " required/><br> 
+                        <br> 
+            <input type="submit" class="registerButton" id="submitDetails"  
+            name="submitDetails" value="Submit" /><br> 
+            </form> 
+        </div>
     </div>
+    <script  src="/sidePanel.js"></script>
 </body>
 </html>

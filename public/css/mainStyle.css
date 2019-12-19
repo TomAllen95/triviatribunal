@@ -226,40 +226,83 @@ li.active
     font-size: 55px;
     position: absolute;
     top: -20px;
+    animation: flickerAnimation 1s infinite;
+
 }
 
 #TickImage
 {
     right: 235px;
     transform: rotateZ(-25deg);
-    animation: flickerAnimation 1s infinite;
 }
 
 #TockImage
 {
     right: -140px;
     transform: rotateZ(25deg);
-    animation: flickerAnimation 1s infinite;
     animation-delay: 0.5s;
-
 }
+
+.tickNcross
+{
+    width: 200px;
+    height: 200px;
+}
+
 #button{
     visibility: hidden;
 }
-.RightWrongImage
+
+#GreenTick,
+#RedCross
 {
     position: absolute;
-    top: 25%;
+    top: 40%;
     left: calc(50%-285px);
 }
 #GreenTick
 {
-    -webkit-filter: drop-shadow( 10px 20px 40px rgba(51, 255, 0, 0.5));
+    opacity: 0;
+    -webkit-filter: drop-shadow( 10px 20px 20px rgba(51, 255, 0, 0.5));
 
 }
 #RedCross
 {
-    -webkit-filter: drop-shadow( 10px 20px 40px rgba(255, 0, 0, 0.5));
+    opacity: 0;
+    -webkit-filter: drop-shadow( 10px 20px 20px rgba(255, 0, 0, 0.5));
+}
+
+#GreenTick.animated,
+#RedCross.animated
+{
+    animation: answerVisualisation 1s ease;
+}
+
+#ReadyTitle,
+#SteadyTitle
+{
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    opacity: 0;
+    animation: opacityOnAndOff 2s ease;
+}
+#ReadyTitle
+{
+    animation-delay: 0.5s;
+}
+#SteadyTitle
+{
+    animation-delay: 3s;
+}
+
+.WholeQuestion
+{
+    opacity: 0;
+    animation: fadeInBottom 1s ease-out;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+
 }
 
 @keyframes flickerAnimation { /* flame pulses */
@@ -295,4 +338,26 @@ li.active
     100% {
         opacity: 0;
     }
+}
+
+@keyframes answerVisualisation {
+    0% {
+      opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+      }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+@keyframes fadeInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to { opacity: 1 }
 }
