@@ -3,6 +3,7 @@ const path = require('path')
 const express = require('express');
 const fs = require('fs');
 const getQuestions = require('./getQuestions');
+const trackLogin = require('./trackLogin');
 const UserSchema = require('./database/models/user');
 const ScoresSchema = require('./database/models/scores')
 const users = require('../src/database/routes/users');
@@ -113,8 +114,11 @@ app.get('/play', async(req, res) => {
 
 //this renders the about page
 app.get('/about', async(req, res) => {
+  trackLogin.setActiveUser(req,res,'JeffTestUser') //This is here to test logins until there is a login page! remove after logins are implemented
+  let userName = trackLogin.findUser(req,res);
   res.render('about', {
-    about: true
+    about: true,
+    userName: userName //remove this after there is a better place for it
   });
 });
 
