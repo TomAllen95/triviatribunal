@@ -6,15 +6,35 @@ const choiceD = document.getElementById('cardContentD');
 
 let choices = document.getElementsByClassName("choices");
 
+const gameStart = document.querySelector('form');
+
+const topic = document.querySelector('CategorySelector');
+const level = document.querySelector('DifficultySelector');
+
 let currentQuestion = {};
 let score = 0;
 let questionCounter = 0;
 let questions = [];
 let questionIndex = "";
 let correctAnswer = "";
-const correct_bonus = 10;
+let correct_bonus = 10;
 
-startGame = async () => {
+let category = "";
+let difficulty = "";
+
+ gameStart.addEventListener ('GameChoiceSubmit', (e) => {
+    e.preventDefault();
+
+    if (level.value == "General Knowledge") {
+        category = 9
+    } else if (level.value == "Mythology"){
+        category = 20
+    } else if (level.value == "Animals"){
+        category = 27
+    }
+    difficulty = level.value;
+
+    // await fetch('http://localhost:3000/api?difficulty=' + difficulty + `&category=` + category).then((response) => {
     await fetch('http://localhost:3000/api').then((response) => {
         response.json().then((data) => {
             if (data.error) {
@@ -26,7 +46,7 @@ startGame = async () => {
             }
         })
     })
-}
+});
 
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
@@ -96,7 +116,7 @@ document.addEventListener('click', e => {
     }, 1000);
 });
 
-startGame();
+
 
 
 // 15 Second Timer to run on display of each question
