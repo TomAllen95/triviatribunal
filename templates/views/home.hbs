@@ -10,15 +10,14 @@
 </head>
 <body>
 
-
     {{>navbar homeActive = home}}
     <div id="Titles">
-        <img id="leftQ" src="/img/QuestionMark.png" class="questionMarks" />
-        <h1> Trivia Tribunal </h1>
-        <img id="rightQ" src="/img/QuestionMark.png" class="questionMarks" />
+        <img id="leftQ" src="/img/QuestionMark.png" class="questionMarks" alt="QuestionMark"/>
+        <h1 id="HomeTitle"> Trivia <br> Tribunal </h1>
+        <img id="rightQ" src="/img/QuestionMark.png" class="questionMarks"  alt="QuestionMark"/>
     </div>
     <div id="LogInSignUp">
-        <button id="LogSignBtn" type="button">Log In / Register</button>
+        <a href="http://localhost:3000/registerlogin" id="LogSignBtn" type="button">Log In / Register</a>
     </div>
     
         <script  src="/sidePanel.js"></script>
