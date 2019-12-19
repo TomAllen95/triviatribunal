@@ -14,8 +14,10 @@ let questionIndex = "";
 let correctAnswer = "";
 const correct_bonus = 10;
 
-startGame = async () => {
-    await fetch('http://localhost:3000/api').then((response) => {
+const startGame = async () => {
+    const difficulty = difficulty.value;
+    const category = category.value
+    await fetch('http://localhost:3000/api?difficulty=' + difficulty + `&category=` + category).then((response) => {
         response.json().then((data) => {
             if (data.error) {
                 console.log(data.error);
@@ -28,7 +30,7 @@ startGame = async () => {
     })
 }
 
-function shuffle(array) {
+const shuffle = (array) => {
     let currentIndex = array.length, temporaryValue, randomIndex;
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
@@ -43,7 +45,7 @@ function shuffle(array) {
     return array;
 }
 
-getNewQuestion = () => {
+const getNewQuestion = () => {
     if (questionCounter == 10) {
         question.textContent = "Game Over! Your score is " + score;
     }
@@ -71,7 +73,8 @@ getNewQuestion = () => {
 
     update();
 
-    // setInterval (timer())
+    //setInterval (
+    //     timer())
 }
 
 //so the 'click' registers and we can see what is being clicked in the inspector. 
