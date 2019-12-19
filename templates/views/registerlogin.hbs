@@ -12,6 +12,9 @@
 <body>
     {{>navbar}}
 
+{{#each errors}}
+    <div class="alert alert-danger">{{errors}}</div>
+{{/each}}
     <div id="LogInOrRegister">
         <div id="LogInDiv">
             <h3>Already a member? Log in here:</h3>
@@ -39,5 +42,6 @@
             </form> 
         </div>
     </div>
+    <script  src="/sidePanel.js"></script>
 </body>
 </html>
