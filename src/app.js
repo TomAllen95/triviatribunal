@@ -15,7 +15,7 @@ const viewsPath = path.join(__dirname, '../templates/views');
 const partialPath = path.join(__dirname, '../templates/partials')
 hbs.registerPartials(partialPath);
 
-const Joi = require('joi')
+const joi = require('joi')
 const app = express();
 const entities = new Entities();
 const config = require('config');
@@ -124,12 +124,19 @@ app.get('/high-scores', async(req, res) => {
 
   ScoresSchema.find({}, (err,obj) => {
     console.log(obj)
+
+    obj.sort( (a, b) => {
+        return b.score - a.score;
+      });
+
+
     res.render('highscores', {
-      highscores: true,
+      highscores: true, 
       scoreList: obj
     });
-  })
 
+  })
+  
 });
 
 app.get('/signup', (req, res) => {

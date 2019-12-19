@@ -243,7 +243,9 @@ li.active
     animation-delay: 0.5s;
 
 }
-
+#button{
+    visibility: hidden;
+}
 .RightWrongImage
 {
     position: absolute;

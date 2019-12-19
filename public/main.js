@@ -3,7 +3,7 @@ const choiceA = document.getElementById('cardContentA');
 const choiceB = document.getElementById('cardContentB');
 const choiceC = document.getElementById('cardContentC');
 const choiceD = document.getElementById('cardContentD');
-
+const button = document.getElementById('button');
 let choices = document.getElementsByClassName("choices");
 
 let currentQuestion = {};
@@ -43,9 +43,16 @@ function shuffle(array) {
     return array;
 }
 
+function unhide() {
+    choices.style.visibilty = 'hidden';
+    button.style.visibilty = 'visible';
+    
+}
+
 getNewQuestion = () => {
     if (questionCounter == 10) {
         question.textContent = "Game Over! Your score is " + score;
+        unhide();
     }
     questionCounter++;
     // Randomly selects an index between 0 and 9 to select a random question from the array
@@ -121,4 +128,7 @@ const scoreUpdate = () => {
 
 
 
+// button.addEventListener('click', () => {
+//     updateScore
+// }
 

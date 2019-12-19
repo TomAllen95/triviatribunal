@@ -24,6 +24,21 @@
         </div>
         <div class="answers">
 
+           <style>
+               .hidden{display: none;
+               }
+
+               .unhidden{display:block;
+               }
+           </style>
+
+           
+                <div id="Game Over" class="hidden">
+                    <div class="hidden"></div>
+                </div>
+<form method="post" action="/highscores">
+        <button id="button">Submit Score</button></form>
+
             <div class="answer">
                 <div class="flipper">
                     <div class="front">
@@ -111,5 +126,20 @@
     </div>
     <script  src="/sidePanel.js"></script>
     <script  src="/main.js"></script>
+
+    {{!-- <script type="text/javascript">
+            function unhide(clickButton, divID) {
+                var item = document.getElementById(divID);
+                if (item) {
+                    if(item.className=='hidden'){
+                        items.className = 'unhidden';
+                        clickedButton.value = 'hide';
+                    }else{
+                        item.className = 'hidden';
+                        clickedButton.value = 'unhide';
+                    }
+                }}
+            </script> --}}
+
 </body>
 </html>
