@@ -25,6 +25,13 @@
         </div>
     </div>
 
+    <h2>High Scores</h2>
+    <ol>
+        {{#each scoreList}}
+        <li>{{this.username}} {{this.score}}</li>
+
+        {{/each}}
+    </ol>
 
     <script  src="/sidePanel.js"></script>
 

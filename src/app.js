@@ -23,7 +23,6 @@ const Joi = require("joi");
 const app = express();
 const entities = new Entities();
 const mongoose = require("mongoose");
-
 const ensureAuthenticated = require("./database/routes/index");
 hbs.registerPartials(partialPath);
 // use routes
@@ -185,10 +184,16 @@ app.get("/about", async (req, res) => {
 });
 
 //this renders the high scores page
+
 app.get("/high-scores", async (req, res) => {
   let userName = trackLogin.findUser(req, res);
   ScoresSchema.find({}, (err, obj) => {
     console.log(obj);
+    
+    obj.sort( (a, b) => {
+        return b.score - a.score;
+      });
+    
     res.render("highscores", {
       highscores: true,
       scoreList: obj,
@@ -202,6 +207,7 @@ app.get("/signup_success", (req, res) => {
   res.render("signup_success", {
     userName: userName
   });
+
 });
 
 // register login page
