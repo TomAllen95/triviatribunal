@@ -80,8 +80,13 @@ document.addEventListener('click', e => {
     userAnswer = selectedChoice.textContent.trim();
 
     if (userAnswer == correctAnswer) {
+        RightOrWrong("GreenTick");
         score += correct_bonus;
         scoreUpdate();
+    }
+    else 
+    {
+        RightOrWrong("RedCross");
     }
     console.log(userAnswer)
     console.log(correctAnswer)
@@ -119,6 +124,12 @@ const scoreUpdate = () => {
     document.getElementById("score").textContent = "Score: " + score;
 }
 
-
+function RightOrWrong(cssID)
+{
+    document.getElementById(cssID).classList.add("animated");
+    setTimeout(function() {
+        document.getElementById(cssID).classList.remove("animated");
+    }, 1500);
+}
 
 

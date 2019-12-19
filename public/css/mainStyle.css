@@ -244,20 +244,35 @@ li.active
 
 }
 
-.RightWrongImage
+.tickNcross
+{
+    width: 200px;
+    height: 200px;
+}
+
+#GreenTick,
+#RedCross
 {
     position: absolute;
-    top: 25%;
+    top: 40%;
     left: calc(50%-285px);
 }
 #GreenTick
 {
-    -webkit-filter: drop-shadow( 10px 20px 40px rgba(51, 255, 0, 0.5));
+    opacity: 0;
+    -webkit-filter: drop-shadow( 10px 20px 20px rgba(51, 255, 0, 0.5));
 
 }
 #RedCross
 {
-    -webkit-filter: drop-shadow( 10px 20px 40px rgba(255, 0, 0, 0.5));
+    opacity: 0;
+    -webkit-filter: drop-shadow( 10px 20px 20px rgba(255, 0, 0, 0.5));
+}
+
+#GreenTick.animated,
+#RedCross.animated
+{
+    animation: answerVisualisation 1.5s ease;
 }
 
 @keyframes flickerAnimation { /* flame pulses */
@@ -294,3 +309,17 @@ li.active
         opacity: 0;
     }
 }
+
+@keyframes answerVisualisation {
+    0% {
+      opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+      }
+
+    100% {
+      opacity: 0;
+    }
+  }
