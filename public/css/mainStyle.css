@@ -251,9 +251,12 @@ li.active
 
 #button{
     visibility: hidden;
-    width: 50px;
+    /* width: 50px; */
     padding: 10px;
-    border-radius: 5px;
+    margin: 20px;
+    border-radius: 20px;
+    font-size: 50px;
+
 }
 
 #GreenTick,
