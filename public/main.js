@@ -6,8 +6,6 @@ const choiceD = document.getElementById('cardContentD');
 
 const button = document.getElementById('button');
 
-
-
 const url_string = window.location.href;
 const url = new URL(url_string);
 let category = url.searchParams.get("Category");
@@ -96,9 +94,15 @@ function shuffle(array) {
 }
 
 function unhide() {
-    choices.style.visibilty = 'hidden';
-    button.style.visibilty = 'visible';
-    
+    console.log(choices[0])
+    choices[0].style.visibility = 'hidden'
+    choices[1].style.visibility = 'hidden'
+    choices[2].style.visibility = 'hidden'
+    choices[3].style.visibility = 'hidden'
+    button.style.visibility = 'visible';
+    // choices.forEach(element => {
+    //     element.style.visibility = 'hidden';
+    // });
 }
 
 getNewQuestion = () => {

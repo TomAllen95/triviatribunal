@@ -185,7 +185,7 @@ app.get("/about", async (req, res) => {
 
 //this renders the high scores page
 
-app.get("/high-scores", async (req, res) => {
+app.get("/highscores", async (req, res) => {
   let userName = trackLogin.findUser(req, res);
   ScoresSchema.find({}, (err, obj) => {
     console.log(obj);
@@ -202,10 +202,22 @@ app.get("/high-scores", async (req, res) => {
   });
 });
 
+app.post('/highscores', (req, res)=>{
+  let userName = trackLogin.findUser(req, res);
+  console.log(userName)
+  const score = new ScoresSchema({
+    username: userName,
+    score: 10
+  });
+  score.save();
+  res.redirect('highscores')
+})
+
 app.get("/signup_success", (req, res) => {
   let userName = trackLogin.findUser(req, res);
   res.render("signup_success", {
     userName: userName
+
   });
 
 });
