@@ -251,6 +251,9 @@ li.active
 
 #button{
     visibility: hidden;
+    width: 50px;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 #GreenTick,
